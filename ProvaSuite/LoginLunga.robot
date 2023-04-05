@@ -26,11 +26,11 @@ LoginLunga
      Click Element  ${labelNumber00}
      Click Element  ${buttonContinua}
      Wait Until Page Contains Element   ${labelVerificaIdentita}
-     Sleep    8s
+     Sleep    13s
      [Tags]    GET
           Run Keyword    Get OTP from API Response
           Sleep    20s
-     Run Keyword    Popup Manager
+     Run Keyword    Popup Manager   ${visualizzaDatiCarta}  ${buttonChiudi}
      Wait Until Page Contains Element   ${visualizzaDatiCarta}
 
 

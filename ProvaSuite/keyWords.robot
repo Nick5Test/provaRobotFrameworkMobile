@@ -28,13 +28,11 @@ Open nexipay no clear
         ...     noReset=true
 
 Popup Manager
-${x}=    Set Variable    ${0}
-
-  WHILE    ${x} < 5
-    ${x}=    Evaluate    ${x} + 1
-    IF   Element Should Be Disabled    ${visualizzaDatiCarta}
-        BREAK
-    ELSE
-     Sleep    2s
-     Click Element    ${buttonChiudi}
-  END
+    [Arguments]     ${visualizzaDatiCarta}  ${buttonChiudi}
+    ${x}=    Set Variable    ${0}
+    WHILE    ${x} < 5
+        Sleep    3s
+        ${elementPresent}=  Run Keyword And Return Status    Element Should Be Visible  ${visualizzaDatiCarta}
+        Run Keyword If    '${elementPresent}' == 'False'    Click Element    ${buttonChiudi}
+        ${x}=    Evaluate    ${x} + 1
+    END
